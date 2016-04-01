@@ -8,7 +8,7 @@
 
 @interface RWTSearchResultsViewController ()
 
-@property (weak, nonatomic) IBOutlet UITableView *searchResultsTable;
+@property (weak, nonatomic) IBOutlet UITableView* searchResultsTable;
 
 @end
 

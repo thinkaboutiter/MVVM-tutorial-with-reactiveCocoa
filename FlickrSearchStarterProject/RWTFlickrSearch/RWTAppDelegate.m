@@ -10,33 +10,32 @@
 #import "RWTFlickrSearchViewController.h"
 
 @interface RWTAppDelegate ()
-
-@property (nonatomic, retain) UINavigationController *navigationController;
-
+@property (nonatomic, retain) UINavigationController* navigationController;
 @end
 
 @implementation RWTAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
-  // create a navigation controller and perform some simple styling
-  self.navigationController = [UINavigationController new];
-  self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
-  [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-  
-  // create and navigate to a view controller
-  UIViewController *viewController = [self createInitialViewController];
-  [self.navigationController pushViewController:viewController animated:NO];
+    // create a navigation controller and perform some simple styling
+    self.navigationController = [UINavigationController new];
+    self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
 
-  // show the navigation controller
-  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  self.window.rootViewController = self.navigationController;
-  [self.window makeKeyAndVisible];
-  return YES;
+    // create and navigate to a view controller
+    UIViewController* viewController = [self createInitialViewController];
+    [self.navigationController pushViewController:viewController animated:NO];
+
+    // show the navigation controller
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = self.navigationController;
+    [self.window makeKeyAndVisible];
+    return YES;
 }
 
-- (UIViewController *)createInitialViewController {
-  return [[RWTFlickrSearchViewController alloc] init];
+- (UIViewController*)createInitialViewController
+{
+    return [[RWTFlickrSearchViewController alloc] init];
 }
 
 @end

@@ -8,9 +8,9 @@
 
 @interface RWTRecentSearchItemTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *searchLabel;
-@property (weak, nonatomic) IBOutlet UILabel *totalResultsLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *thumbnailImage;
+@property (weak, nonatomic) IBOutlet UILabel* searchLabel;
+@property (weak, nonatomic) IBOutlet UILabel* totalResultsLabel;
+@property (weak, nonatomic) IBOutlet UIImageView* thumbnailImage;
 
 @end
 
