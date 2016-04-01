@@ -8,7 +8,7 @@
 
 #import "CETableViewBindingHelper.h"
 #import "CEReactiveView.h"
-#import <ReactiveCocoa/RACEXTScope.h>
+#import <ReactiveCocoa/EXTScope.h>
 
 @interface CETableViewBindingHelper () <UITableViewDataSource, UITableViewDelegate>
 
