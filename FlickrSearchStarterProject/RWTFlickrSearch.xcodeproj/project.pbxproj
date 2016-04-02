@@ -10,6 +10,7 @@
 		10A33F26C779658596893AF4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 688696C0108168A4C9C4A042 /* Pods.framework */; };
 		4F18596D1CAEBF7E0047DA74 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F18596C1CAEBF7E0047DA74 /* Launch Screen.storyboard */; };
 		4F93B4621CB0386F00B71BCB /* FlickrSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F93B4611CB0386F00B71BCB /* FlickrSearchViewModel.swift */; };
+		4F93B4651CB0852500B71BCB /* RACHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F93B4641CB0852500B71BCB /* RACHelpers.swift */; };
 		728550B5193E52740032A754 /* CETableViewBindingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 728550B4193E52740032A754 /* CETableViewBindingHelper.m */; };
 		72E40170192BFFCE00354806 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E4016F192BFFCE00354806 /* Foundation.framework */; };
 		72E40172192BFFCE00354806 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E40171192BFFCE00354806 /* CoreGraphics.framework */; };
@@ -48,6 +49,7 @@
 		4F93B4601CB0386E00B71BCB /* RWTFlickrSearch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "RWTFlickrSearch-Bridging-Header.h"; path = "ViewModels/RWTFlickrSearch-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F93B4611CB0386F00B71BCB /* FlickrSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSearchViewModel.swift; sourceTree = "<group>"; };
 		4F93B4631CB03A4A00B71BCB /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		4F93B4641CB0852500B71BCB /* RACHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACHelpers.swift; path = RACHelpers/RACHelpers.swift; sourceTree = "<group>"; };
 		688696C0108168A4C9C4A042 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		728550B2193E52740032A754 /* CEReactiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEReactiveView.h; sourceTree = "<group>"; };
 		728550B3193E52740032A754 /* CETableViewBindingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CETableViewBindingHelper.h; sourceTree = "<group>"; };
@@ -126,6 +128,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		4F93B4661CB0852C00B71BCB /* RACHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				4F93B4641CB0852500B71BCB /* RACHelpers.swift */,
+			);
+			name = RACHelpers;
+			sourceTree = "<group>";
+		};
 		728550B1193E52510032A754 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +181,7 @@
 		72E40175192BFFCE00354806 /* RWTFlickrSearch */ = {
 			isa = PBXGroup;
 			children = (
+				4F93B4661CB0852C00B71BCB /* RACHelpers */,
 				728550B1193E52510032A754 /* Util */,
 				72E401C1192C82CA00354806 /* Model */,
 				4F93B45F1CB0384300B71BCB /* ViewModels */,
@@ -401,6 +412,7 @@
 				72E4017C192BFFCE00354806 /* main.m in Sources */,
 				72E401B9192C03AB00354806 /* RWTSearchResultsViewController.m in Sources */,
 				728550B5193E52740032A754 /* CETableViewBindingHelper.m in Sources */,
+				4F93B4651CB0852500B71BCB /* RACHelpers.swift in Sources */,
 				72E401B4192C03AB00354806 /* RWTFlickrSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
