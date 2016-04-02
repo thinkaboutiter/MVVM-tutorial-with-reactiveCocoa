@@ -7,4 +7,5 @@
 
 @interface RWTFlickrSearchViewController : UIViewController
 
+- (nonnull instancetype)initWithViewModel:(nonnull FlickrSearchViewModel*)viewModel;
 @end

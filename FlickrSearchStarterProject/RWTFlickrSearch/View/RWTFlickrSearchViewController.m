@@ -8,6 +8,8 @@
 
 @interface RWTFlickrSearchViewController ()
 
+@property(nullable, weak, nonatomic) FlickrSearchViewModel* viewModel;
+
 @property (weak, nonatomic) IBOutlet UITextField* searchTextField;
 @property (weak, nonatomic) IBOutlet UIButton* searchButton;
 @property (weak, nonatomic) IBOutlet UITableView* searchHistoryTable;
@@ -16,6 +18,18 @@
 @end
 
 @implementation RWTFlickrSearchViewController
+
+#pragma mark - initializers
+
+- (instancetype)initWithViewModel:(FlickrSearchViewModel *)viewModel
+{
+    if (self = [super init]) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
+
+#pragma mark - Life cycle
 
 - (void)viewDidLoad
 {
@@ -26,6 +40,16 @@
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:nil
                                                                             action:nil];
+    [self bindViewModel];
 }
+
+#pragma mark - Binding
+
+- (void)bindViewModel
+{
+    self.title = self.viewModel.title;
+    self.searchTextField.text = self.viewModel.searchText;
+}
+
 
 @end

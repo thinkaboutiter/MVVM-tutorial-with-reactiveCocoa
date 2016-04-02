@@ -11,9 +11,22 @@
 
 @interface RWTAppDelegate ()
 @property (nonatomic, retain) UINavigationController* navigationController;
+@property (nonnull, strong, nonatomic) FlickrSearchViewModel* viewModel;
 @end
 
 @implementation RWTAppDelegate
+
+#pragma mark - Accessors
+
+- (FlickrSearchViewModel *)viewModel
+{
+    if (!_viewModel) {
+        _viewModel = [FlickrSearchViewModel new];
+    }
+    return _viewModel;
+}
+
+#pragma mark - Life cycle
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
@@ -35,7 +48,7 @@
 
 - (UIViewController*)createInitialViewController
 {
-    return [[RWTFlickrSearchViewController alloc] init];
+    return [[RWTFlickrSearchViewController alloc] initWithViewModel:self.viewModel];
 }
 
 @end
