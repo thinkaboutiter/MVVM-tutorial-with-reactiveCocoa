@@ -12,6 +12,7 @@
 @interface RWTAppDelegate ()
 @property (nonatomic, retain) UINavigationController* navigationController;
 @property (nonnull, strong, nonatomic) FlickrSearchViewModel* viewModel;
+@property (nonnull, strong, nonatomic) ViewModelServices* viewModelServices;
 @end
 
 @implementation RWTAppDelegate
@@ -21,9 +22,17 @@
 - (FlickrSearchViewModel *)viewModel
 {
     if (!_viewModel) {
-        _viewModel = [FlickrSearchViewModel new];
+        _viewModel = [[FlickrSearchViewModel alloc] initWithServices:self.viewModelServices];
     }
     return _viewModel;
+}
+
+- (ViewModelServices *)viewModelServices
+{
+    if (!_viewModelServices) {
+        _viewModelServices = [ViewModelServices new];
+    }
+    return _viewModelServices;
 }
 
 #pragma mark - Life cycle
