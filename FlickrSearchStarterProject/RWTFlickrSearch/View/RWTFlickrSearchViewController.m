@@ -40,7 +40,15 @@
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:nil
                                                                             action:nil];
+    [self configureUI];
     [self bindViewModel];
+}
+
+#pragma mark - Configure UI (private)
+
+- (void)configureUI
+{
+    self.searchTextField.autocorrectionType = UITextAutocorrectionTypeNo;
 }
 
 #pragma mark - Binding
@@ -48,7 +56,9 @@
 - (void)bindViewModel
 {
     self.title = self.viewModel.title;
-    self.searchTextField.text = self.viewModel.searchText;
+
+    // signal that emits a next event containing the current text each time the text field updates
+    RAC(self.viewModel, searchText) = self.searchTextField.rac_textSignal;
 }
 
 
