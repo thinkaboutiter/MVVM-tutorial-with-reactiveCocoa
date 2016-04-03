@@ -79,7 +79,7 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
             
             // when we are done, remove the reference to this request
             return RACDisposable(block: { 
-                [self.requests .removeObject(flickrRequest)]
+                [self.requests.removeObject(flickrRequest)]
             })
         }
         

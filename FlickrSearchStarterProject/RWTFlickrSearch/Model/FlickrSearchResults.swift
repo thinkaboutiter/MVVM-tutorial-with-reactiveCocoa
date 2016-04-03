@@ -14,9 +14,9 @@ class FlickrSearchResults: NSObject {
     
     var searchString: String?
     var photosArray: [FlickrPhoto]?
-    var totalResults: UInt?
+    var totalResults: Int64?
     
     override var description: String {
-        return "searchString: \(self.searchString ?? ""), totalResults: \(self.totalResults ?? 0), photos: \(self.photosArray ?? [FlickrPhoto]())"
+        return "searchString: `\(self.searchString ?? "")`,\ntotalResults: \(self.totalResults ?? 0),\nphotos: \(self.photosArray ?? [FlickrPhoto]())"
     }
 }
