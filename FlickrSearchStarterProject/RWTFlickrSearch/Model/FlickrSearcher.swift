@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveCocoa
 
+/** Exposes services and is responsible for providing business logic for the application */
 class FlickrSearcher: NSObject, FlickrSearchable {
     
     // MARK: - Initialization
