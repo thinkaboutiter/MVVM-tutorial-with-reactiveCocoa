@@ -100,8 +100,8 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
             results.searchString = searchString
             
             // `validResults`
-            if let validResults = response.valueForKeyPath("photos.total") as? UInt {
-                results.totalResults = validResults
+            if let validResults = response.valueForKeyPath("photos.total") as? String {
+                results.totalResults = Int64(validResults)
             }
             else {
                 debugPrint("\(self) \(#line) \(#function) » `photos.total` can not be downcast: \(response.valueForKeyPath("photos.total"))")
