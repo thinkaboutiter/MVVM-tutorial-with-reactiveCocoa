@@ -51,7 +51,7 @@ import ReactiveCocoa
     
     /** Delegates to the model to perform the search */
     private func executeSearchSignal() -> RACSignal {
-        let signal = self.services.getFlickrSearchService().flickrSearchSignal(forSearchString: self.searchText)
+        let signal = self.services.getFlickrSearchService().flickrSearchSignal(forSearchString: self.searchText).logAll()
         return signal
     }
 }

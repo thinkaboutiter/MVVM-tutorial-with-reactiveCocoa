@@ -46,6 +46,12 @@ public func ~> (signal: RACSignal, rac: RAC) {
 
 // MARK: - `RACObserve` macro swift replacement
 
-public func RACObserve(target: NSObject, _ keyPath: String) -> RACSignal {
-    return target.rac_valuesForKeyPath(keyPath, observer: target)
+//public func RACObserve(target: NSObject, _ keyPath: String) -> RACSignal {
+//    return target.rac_valuesForKeyPath(keyPath, observer: target)
+//}
+
+extension NSObject {
+    func RACObserve(target: NSObject!, _ keyPath: String) -> RACSignal{
+        return target.rac_valuesForKeyPath(keyPath, observer: target)
+    }
 }
