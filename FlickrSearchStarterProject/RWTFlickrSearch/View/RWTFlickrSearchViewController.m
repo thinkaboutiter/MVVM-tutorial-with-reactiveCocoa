@@ -63,6 +63,20 @@
     // button taps result in the given command executing,
     // the enabled state of the button reflects the enabled state of the command
     self.searchButton.rac_command = self.viewModel.executeSearchCommand;
+    
+    // RACCommand exposes an executing property,
+    // and that’s a signal that emits true and false events
+    // to indicate when the command starts and ends execution
+    RAC([UIApplication sharedApplication], networkActivityIndicatorVisible) = self.viewModel.executeSearchCommand.executing;
+    
+    // when the command executes, the loading indicator should be shown
+    RAC(self.loadingIndicator, hidden) = [self.viewModel.executeSearchCommand.executing not];
+    
+    // hide keyboard whenever the command executes
+    // `executionSignals` property emits the signals that generate each time the command executes
+    [self.viewModel.executeSearchCommand.executionSignals subscribeNext:^(id x) {
+        [self.searchTextField resignFirstResponder];
+    }];
 }
 
 
