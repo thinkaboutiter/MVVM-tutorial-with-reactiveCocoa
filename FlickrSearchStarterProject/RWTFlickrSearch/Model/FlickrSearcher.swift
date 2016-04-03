@@ -89,7 +89,58 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
     // MARK: - `FlickrSearchable` protocol
     
     func flickrSearchSignal(forSearchString searchString: String) -> RACSignal {
-        let signal: RACSignal = RACSignal.empty().logAll().delay(2.0).logAll()
+        let signal: RACSignal = self.signalFromAPIMethod("flickr.photos.search",
+                                                         arguments: [
+                                                            "text" : searchString,
+                                                            "sort" : "interestingness-desc"
+        ]) { (response) -> AnyObject in
+            let results: FlickrSearchResults = FlickrSearchResults()
+            
+            // `searchString`
+            results.searchString = searchString
+            
+            // `validResults`
+            if let validResults = response.valueForKeyPath("photos.total") as? UInt {
+                results.totalResults = validResults
+            }
+            else {
+                debugPrint("\(self) \(#line) \(#function) » `photos.total` can not be downcast: \(response.valueForKeyPath("photos.total"))")
+            }
+            
+            // `validPhotosArray`
+            if let validPhotosArray: [[NSObject : AnyObject]] = response.valueForKeyPath("photos.photo") as? [[NSObject : AnyObject]] {
+                results.photosArray = validPhotosArray.map({ (jsonObject: [NSObject : AnyObject]) -> FlickrPhoto in
+                    let photo: FlickrPhoto = FlickrPhoto()
+                    
+                    // `validTitle`
+                    if let validTitle: String = jsonObject["title"] as? String {
+                        photo.title = validTitle
+                    }
+                    else {
+                        debugPrint("\(self) \(#line) \(#function) » `title` can not be downcast: \(jsonObject["title"])")
+                    }
+                    
+                    // `validIdentifier`
+                    if let validIdentifier: String = jsonObject["id"] as? String {
+                        photo.identifier = validIdentifier
+                    }
+                    else {
+                        debugPrint("\(self) \(#line) \(#function) » `id` can not be downcast: \(jsonObject["id"])")
+                    }
+                    
+                    // `validUrl`
+                    photo.url = self.flickrContext.photoSourceURLFromDictionary(jsonObject, size: OFFlickrSmallSize)
+                    
+                    return photo
+                })
+            }
+            else {
+                debugPrint("\(self) \(#line) \(#function) » `photos.photo` can not be downcast: \(response.valueForKeyPath("photos.photo"))")
+            }
+            
+            return results
+        }
+        
         return signal
     }
 }
