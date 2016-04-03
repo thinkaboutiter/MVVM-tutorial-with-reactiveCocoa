@@ -59,6 +59,10 @@
 
     // signal that emits a next event containing the current text each time the text field updates
     RAC(self.viewModel, searchText) = self.searchTextField.rac_textSignal;
+    
+    // button taps result in the given command executing,
+    // the enabled state of the button reflects the enabled state of the command
+    self.searchButton.rac_command = self.viewModel.executeSearchCommand;
 }
 
 
