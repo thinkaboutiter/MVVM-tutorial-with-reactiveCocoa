@@ -12,7 +12,7 @@ class ViewModelServices: NSObject, ViewModelServicable {
     
     // MARK: - Properties
     
-    lazy var searchService: FlickrSearcher = {
+    private lazy var searchService: FlickrSearcher = {
         let lazy_searchService = FlickrSearcher()
         return lazy_searchService
     }()
