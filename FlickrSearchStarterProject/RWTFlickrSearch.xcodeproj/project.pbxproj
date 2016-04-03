@@ -12,6 +12,7 @@
 		4F1FF3141CB1640D00308FD3 /* FlickrSearchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1FF3131CB1640D00308FD3 /* FlickrSearchable.swift */; };
 		4F1FF3161CB1652D00308FD3 /* FlickrSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1FF3151CB1652D00308FD3 /* FlickrSearcher.swift */; };
 		4F1FF3181CB166BF00308FD3 /* ViewModelServicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1FF3171CB166BF00308FD3 /* ViewModelServicable.swift */; };
+		4F1FF31B1CB16E0C00308FD3 /* ViewModelServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1FF31A1CB16E0C00308FD3 /* ViewModelServices.swift */; };
 		4F93B4621CB0386F00B71BCB /* FlickrSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F93B4611CB0386F00B71BCB /* FlickrSearchViewModel.swift */; };
 		4F93B4651CB0852500B71BCB /* RACHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F93B4641CB0852500B71BCB /* RACHelpers.swift */; };
 		728550B5193E52740032A754 /* CETableViewBindingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 728550B4193E52740032A754 /* CETableViewBindingHelper.m */; };
@@ -53,6 +54,7 @@
 		4F1FF3151CB1652D00308FD3 /* FlickrSearcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSearcher.swift; sourceTree = "<group>"; };
 		4F1FF3171CB166BF00308FD3 /* ViewModelServicable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelServicable.swift; sourceTree = "<group>"; };
 		4F1FF3191CB16CFC00308FD3 /* RWTFlickrSearch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RWTFlickrSearch-Bridging-Header.h"; sourceTree = "<group>"; };
+		4F1FF31A1CB16E0C00308FD3 /* ViewModelServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelServices.swift; sourceTree = "<group>"; };
 		4F93B4611CB0386F00B71BCB /* FlickrSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSearchViewModel.swift; sourceTree = "<group>"; };
 		4F93B4631CB03A4A00B71BCB /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		4F93B4641CB0852500B71BCB /* RACHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACHelpers.swift; path = RACHelpers/RACHelpers.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				4F93B4611CB0386F00B71BCB /* FlickrSearchViewModel.swift */,
 				4F1FF3171CB166BF00308FD3 /* ViewModelServicable.swift */,
+				4F1FF31A1CB16E0C00308FD3 /* ViewModelServices.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				4F93B4621CB0386F00B71BCB /* FlickrSearchViewModel.swift in Sources */,
 				72E4017C192BFFCE00354806 /* main.m in Sources */,
 				72E401B9192C03AB00354806 /* RWTSearchResultsViewController.m in Sources */,
+				4F1FF31B1CB16E0C00308FD3 /* ViewModelServices.swift in Sources */,
 				728550B5193E52740032A754 /* CETableViewBindingHelper.m in Sources */,
 				4F93B4651CB0852500B71BCB /* RACHelpers.swift in Sources */,
 				72E401B4192C03AB00354806 /* RWTFlickrSearchViewController.m in Sources */,

@@ -38,6 +38,12 @@ class FlickrSearchViewModel: NSObject {
         }
     }
     
+    // MARK: - Life cycle
+    
+    deinit {
+        debugPrint("\(self) \(#line) \(#function) » Deinitialize")
+    }
+    
     // MARK: - Signals
     
     /** Delegates to the model to perform the search */
