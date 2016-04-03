@@ -9,17 +9,17 @@
 import Foundation
 import ReactiveCocoa
 
-class FlickrSearchViewModel: NSObject {
+@objc class FlickrSearchViewModel: NSObject {
     var searchText: String = ""
     var title: String = "Flickr Search"
     var executeSearchCommand: RACCommand!
     
-    private unowned let service: ViewModelServicable
+    private unowned let services: ViewModelServicable
     
     // MARK: - Initialize
     
-    init(withService service: ViewModelServicable) {
-        self.service = service
+    @objc init(withServices services: ViewModelServicable) {
+        self.services = services
         
         super.init()
         
@@ -48,7 +48,7 @@ class FlickrSearchViewModel: NSObject {
     
     /** Delegates to the model to perform the search */
     private func executeSearchSignal() -> RACSignal {
-        let signal = self.service.getFlickrSearchService().flickrSearchSignal(forSearchString: self.searchText)
+        let signal = self.services.getFlickrSearchService().flickrSearchSignal(forSearchString: self.searchText)
         return signal
     }
 }

@@ -10,6 +10,6 @@ import Foundation
 import ReactiveCocoa
 
 /** Define interface for the Model layer */
-protocol FlickrSearchable: NSObjectProtocol {
+@objc protocol FlickrSearchable: NSObjectProtocol {
     func flickrSearchSignal(forSearchString searchString: String) -> RACSignal
 }
