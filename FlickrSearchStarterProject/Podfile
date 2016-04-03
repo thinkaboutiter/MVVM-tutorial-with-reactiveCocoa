@@ -1,0 +1,8 @@
+use_frameworks!
+
+platform :ios, "8.4"
+
+pod "ReactiveCocoa"
+pod "objectiveflickr"
+pod "LinqToObjectiveC"
+pod "SDWebImage"
