@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		10A33F26C779658596893AF4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 688696C0108168A4C9C4A042 /* Pods.framework */; };
 		4F18596D1CAEBF7E0047DA74 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F18596C1CAEBF7E0047DA74 /* Launch Screen.storyboard */; };
+		4F1FF3141CB1640D00308FD3 /* FlickrSearchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1FF3131CB1640D00308FD3 /* FlickrSearchable.swift */; };
+		4F1FF3161CB1652D00308FD3 /* FlickrSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1FF3151CB1652D00308FD3 /* FlickrSearcher.swift */; };
+		4F1FF3181CB166BF00308FD3 /* ViewModelServicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1FF3171CB166BF00308FD3 /* ViewModelServicable.swift */; };
+		4F1FF31B1CB16E0C00308FD3 /* ViewModelServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1FF31A1CB16E0C00308FD3 /* ViewModelServices.swift */; };
 		4F93B4621CB0386F00B71BCB /* FlickrSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F93B4611CB0386F00B71BCB /* FlickrSearchViewModel.swift */; };
 		4F93B4651CB0852500B71BCB /* RACHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F93B4641CB0852500B71BCB /* RACHelpers.swift */; };
 		728550B5193E52740032A754 /* CETableViewBindingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 728550B4193E52740032A754 /* CETableViewBindingHelper.m */; };
@@ -46,7 +50,11 @@
 
 /* Begin PBXFileReference section */
 		4F18596C1CAEBF7E0047DA74 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		4F93B4601CB0386E00B71BCB /* RWTFlickrSearch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "RWTFlickrSearch-Bridging-Header.h"; path = "ViewModels/RWTFlickrSearch-Bridging-Header.h"; sourceTree = "<group>"; };
+		4F1FF3131CB1640D00308FD3 /* FlickrSearchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSearchable.swift; sourceTree = "<group>"; };
+		4F1FF3151CB1652D00308FD3 /* FlickrSearcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSearcher.swift; sourceTree = "<group>"; };
+		4F1FF3171CB166BF00308FD3 /* ViewModelServicable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelServicable.swift; sourceTree = "<group>"; };
+		4F1FF3191CB16CFC00308FD3 /* RWTFlickrSearch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RWTFlickrSearch-Bridging-Header.h"; sourceTree = "<group>"; };
+		4F1FF31A1CB16E0C00308FD3 /* ViewModelServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelServices.swift; sourceTree = "<group>"; };
 		4F93B4611CB0386F00B71BCB /* FlickrSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSearchViewModel.swift; sourceTree = "<group>"; };
 		4F93B4631CB03A4A00B71BCB /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		4F93B4641CB0852500B71BCB /* RACHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACHelpers.swift; path = RACHelpers/RACHelpers.swift; sourceTree = "<group>"; };
@@ -124,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				4F93B4611CB0386F00B71BCB /* FlickrSearchViewModel.swift */,
+				4F1FF3171CB166BF00308FD3 /* ViewModelServicable.swift */,
+				4F1FF31A1CB16E0C00308FD3 /* ViewModelServices.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -198,7 +208,7 @@
 		72E40176192BFFCE00354806 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4F93B4601CB0386E00B71BCB /* RWTFlickrSearch-Bridging-Header.h */,
+				4F1FF3191CB16CFC00308FD3 /* RWTFlickrSearch-Bridging-Header.h */,
 				72E40177192BFFCE00354806 /* RWTFlickrSearch-Info.plist */,
 				72E40178192BFFCE00354806 /* InfoPlist.strings */,
 				72E4017B192BFFCE00354806 /* main.m */,
@@ -248,6 +258,8 @@
 		72E401C1192C82CA00354806 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4F1FF3131CB1640D00308FD3 /* FlickrSearchable.swift */,
+				4F1FF3151CB1652D00308FD3 /* FlickrSearcher.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -405,12 +417,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F1FF3141CB1640D00308FD3 /* FlickrSearchable.swift in Sources */,
 				72E40180192BFFCE00354806 /* RWTAppDelegate.m in Sources */,
 				72E401BE192C050F00354806 /* RWTSearchResultsTableViewCell.m in Sources */,
+				4F1FF3161CB1652D00308FD3 /* FlickrSearcher.swift in Sources */,
+				4F1FF3181CB166BF00308FD3 /* ViewModelServicable.swift in Sources */,
 				72E401B7192C03AB00354806 /* RWTRecentSearchItemTableViewCell.m in Sources */,
 				4F93B4621CB0386F00B71BCB /* FlickrSearchViewModel.swift in Sources */,
 				72E4017C192BFFCE00354806 /* main.m in Sources */,
 				72E401B9192C03AB00354806 /* RWTSearchResultsViewController.m in Sources */,
+				4F1FF31B1CB16E0C00308FD3 /* ViewModelServices.swift in Sources */,
 				728550B5193E52740032A754 /* CETableViewBindingHelper.m in Sources */,
 				4F93B4651CB0852500B71BCB /* RACHelpers.swift in Sources */,
 				72E401B4192C03AB00354806 /* RWTFlickrSearchViewController.m in Sources */,
@@ -538,7 +554,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "RWTFlickrSearch/ViewModels/RWTFlickrSearch-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "RWTFlickrSearch/RWTFlickrSearch-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -556,7 +572,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "RWTFlickrSearch/ViewModels/RWTFlickrSearch-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "RWTFlickrSearch/RWTFlickrSearch-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
