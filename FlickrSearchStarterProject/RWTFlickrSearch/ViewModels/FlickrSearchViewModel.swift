@@ -14,9 +14,13 @@ class FlickrSearchViewModel: NSObject {
     var title: String = "Flickr Search"
     var executeSearchCommand: RACCommand!
     
+    private unowned let service: ViewModelServicable
+    
     // MARK: - Initialize
     
-    override init() {
+    init(withService service: ViewModelServicable) {
+        self.service = service
+        
         super.init()
         
         // create `validSearchSignal`
@@ -36,8 +40,9 @@ class FlickrSearchViewModel: NSObject {
     
     // MARK: - Signals
     
+    /** Delegates to the model to perform the search */
     private func executeSearchSignal() -> RACSignal {
-        let signal = RACSignal.empty().logAll().delay(2.0).logAll()
+        let signal = self.service.getFlickrSearchService().flickrSearchSignal(forSearchString: self.searchText)
         return signal
     }
 }
