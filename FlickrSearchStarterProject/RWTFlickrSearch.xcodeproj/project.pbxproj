@@ -134,6 +134,32 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4F1CD1311CB9865D00C8506E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				72E401A7192C03AB00354806 /* RWTFlickrSearchViewController.h */,
+				72E401A8192C03AB00354806 /* RWTFlickrSearchViewController.m */,
+				72E401A9192C03AB00354806 /* RWTFlickrSearchViewController.xib */,
+				72E401AF192C03AB00354806 /* RWTSearchResultsViewController.h */,
+				72E401B0192C03AB00354806 /* RWTSearchResultsViewController.m */,
+				72E401B1192C03AB00354806 /* RWTSearchResultsViewController.xib */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4F1CD1321CB9867400C8506E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				72E401BB192C050F00354806 /* RWTSearchResultsTableViewCell.h */,
+				72E401BC192C050F00354806 /* RWTSearchResultsTableViewCell.m */,
+				72E401BD192C050F00354806 /* RWTSearchResultsTableViewCell.xib */,
+				72E401AC192C03AB00354806 /* RWTRecentSearchItemTableViewCell.h */,
+				72E401AD192C03AB00354806 /* RWTRecentSearchItemTableViewCell.m */,
+				72E401AE192C03AB00354806 /* RWTRecentSearchItemTableViewCell.xib */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		4F93B45F1CB0384300B71BCB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,18 +272,8 @@
 		72E401A4192C03AB00354806 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				72E401BB192C050F00354806 /* RWTSearchResultsTableViewCell.h */,
-				72E401BC192C050F00354806 /* RWTSearchResultsTableViewCell.m */,
-				72E401BD192C050F00354806 /* RWTSearchResultsTableViewCell.xib */,
-				72E401A7192C03AB00354806 /* RWTFlickrSearchViewController.h */,
-				72E401A8192C03AB00354806 /* RWTFlickrSearchViewController.m */,
-				72E401A9192C03AB00354806 /* RWTFlickrSearchViewController.xib */,
-				72E401AC192C03AB00354806 /* RWTRecentSearchItemTableViewCell.h */,
-				72E401AD192C03AB00354806 /* RWTRecentSearchItemTableViewCell.m */,
-				72E401AE192C03AB00354806 /* RWTRecentSearchItemTableViewCell.xib */,
-				72E401AF192C03AB00354806 /* RWTSearchResultsViewController.h */,
-				72E401B0192C03AB00354806 /* RWTSearchResultsViewController.m */,
-				72E401B1192C03AB00354806 /* RWTSearchResultsViewController.xib */,
+				4F1CD1321CB9867400C8506E /* UI */,
+				4F1CD1311CB9865D00C8506E /* ViewControllers */,
 			);
 			path = View;
 			sourceTree = "<group>";
