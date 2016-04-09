@@ -8,6 +8,7 @@
 
 #import "RWTAppDelegate.h"
 #import "RWTFlickrSearchViewController.h"
+@import SimpleLogger;
 
 @interface RWTAppDelegate ()
 @property (nonatomic, retain) UINavigationController* navigationController;
@@ -52,6 +53,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
+    
+    // simple logger
+    [SimpleLogger enableLogging:true];
+    
     return YES;
 }
 

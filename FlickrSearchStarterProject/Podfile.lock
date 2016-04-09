@@ -16,12 +16,14 @@ PODS:
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
+  - SimpleLogger (0.1.9)
 
 DEPENDENCIES:
   - LinqToObjectiveC
   - objectiveflickr
   - ReactiveCocoa
   - SDWebImage
+  - SimpleLogger
 
 SPEC CHECKSUMS:
   LinqToObjectiveC: f0e40c137a458b6b9725c4c7b6a575c0c72e3aec
@@ -29,5 +31,6 @@ SPEC CHECKSUMS:
   ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SimpleLogger: 05c7a7535ed1523b42ade5b2dfe651ecfa8a6352
 
 COCOAPODS: 0.39.0

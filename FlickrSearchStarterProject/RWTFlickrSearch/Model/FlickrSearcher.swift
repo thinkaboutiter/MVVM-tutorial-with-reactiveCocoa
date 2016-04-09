@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveCocoa
 import objectiveflickr
+import SimpleLogger
 
 /** Exposes services and is responsible for providing business logic for the application */
 class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
@@ -61,7 +62,7 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
                         return validTuple.second
                     }
                     else {
-                        debugPrint("\(self) \(#line) \(#function) » possible unsuccessful `RACTuple` downcast : \(tuple)")
+                        Logger.logError().logMessage("\(self) \(#line) \(#function) » possible unsuccessful `RACTuple` downcast").logObject(tuple)
                         return (tuple as! RACTuple).second
                     }
                 })
@@ -104,7 +105,7 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
                 results.totalResults = Int64(validResults)
             }
             else {
-                debugPrint("\(self) \(#line) \(#function) » `photos.total` can not be downcast: \(response.valueForKeyPath("photos.total"))")
+                Logger.logError().logMessage("\(self) \(#line) \(#function) » `photos.total` can not be downcast:").logObject(response.valueForKeyPath("photos.total"))
             }
             
             // `validPhotosArray`
@@ -117,7 +118,7 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
                         photo.title = validTitle
                     }
                     else {
-                        debugPrint("\(self) \(#line) \(#function) » `title` can not be downcast: \(jsonObject["title"])")
+                        Logger.logError().logMessage("\(self) \(#line) \(#function) » `title` can not be downcast:").logObject(jsonObject["title"])
                     }
                     
                     // `validIdentifier`
@@ -125,7 +126,7 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
                         photo.identifier = validIdentifier
                     }
                     else {
-                        debugPrint("\(self) \(#line) \(#function) » `id` can not be downcast: \(jsonObject["id"])")
+                        Logger.logError().logMessage("\(self) \(#line) \(#function) » `id` can not be downcast:").logObject(jsonObject["id"])
                     }
                     
                     // `validUrl`
@@ -135,7 +136,7 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
                 })
             }
             else {
-                debugPrint("\(self) \(#line) \(#function) » `photos.photo` can not be downcast: \(response.valueForKeyPath("photos.photo"))")
+                Logger.logError().logMessage("\(self) \(#line) \(#function) » `photos.photo` can not be downcast:").logObject(response.valueForKeyPath("photos.photo"))
             }
             
             return results

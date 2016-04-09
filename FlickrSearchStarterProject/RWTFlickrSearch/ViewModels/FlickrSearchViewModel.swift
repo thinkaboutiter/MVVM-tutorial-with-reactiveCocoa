@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveCocoa
+import SimpleLogger
 
 /** Represents the *view-state* of the application.
     It also responds to user interactions and *events* that come from the **Model layer**,
@@ -28,11 +29,11 @@ import ReactiveCocoa
         
         // create `validSearchSignal`
         let validSearchSignal: RACSignal = RACObserve(self, "searchText").map { (value: AnyObject!) -> AnyObject! in
-            (value as! String).characters.count > 3
+            (value as! String).characters.count > 2
         }.distinctUntilChanged()
         
         validSearchSignal.subscribeNext { (value: AnyObject!) in
-            debugPrint("\(self) \(#line) \(#function) search text valid » \((value as! Bool) ? "YES" : "NO")")
+            Logger.logInfo().logMessage("\(self) \(#line) \(#function) search text valid » \((value as! Bool) ? "YES" : "NO")")
         }
         
         // create a command that is enabled when the validSearchSignal emits `true`
@@ -44,7 +45,7 @@ import ReactiveCocoa
     // MARK: - Life cycle
     
     deinit {
-        debugPrint("\(self) \(#line) \(#function) » Deinitialize")
+        Logger.logInfo().logMessage("\(self) \(#line) \(#function) » `FlickrSearchViewModel` Deinitialized")
     }
     
     // MARK: - Signals
