@@ -8,10 +8,25 @@
 
 @interface RWTSearchResultsViewController ()
 
+// `viewModel`
+@property(nullable, nonatomic, weak) SearchResultsViewModel* viewModel;
+
+// outlets
 @property (weak, nonatomic) IBOutlet UITableView* searchResultsTable;
 
 @end
 
 @implementation RWTSearchResultsViewController
+
+#pragma mark - Initialization
+
+- (instancetype)initWithViewModel:(SearchResultsViewModel*)viewModel
+{
+    self = [super init];
+    if (self) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
 
 @end
