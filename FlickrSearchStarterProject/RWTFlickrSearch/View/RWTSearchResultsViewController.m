@@ -55,14 +55,14 @@ static NSString* const CellIdentifier = @"cell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.viewModel.searchResults.count;
+    return self.viewModel.searchResultsArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if ([self.viewModel.searchResults[indexPath.row] title]) {
-        cell.textLabel.text = [self.viewModel.searchResults[indexPath.row] title];
+    if ([self.viewModel.searchResultsArray[indexPath.row] title]) {
+        cell.textLabel.text = [self.viewModel.searchResultsArray[indexPath.row] title];
     }
     
     return cell;

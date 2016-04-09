@@ -17,13 +17,13 @@ class SearchResultsViewModel: NSObject {
     // MARK: - Properties
     
     var title: String
-    var searchResults: [FlickrPhoto]
+    var searchResultsArray: [FlickrPhoto]
     
     // MARK: - Initialization
     
     init(withSearchResults results: FlickrSearchResults, services: ViewModelServicable) {
         self.title = results.searchString
-        self.searchResults = results.photosArray
+        self.searchResultsArray = results.photosArray
         
         super.init()
     }
