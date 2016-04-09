@@ -20,7 +20,7 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithViewModel:(SearchResultsViewModel*)viewModel
+- (nonnull instancetype)initWithViewModel:(nonnull SearchResultsViewModel*)viewModel
 {
     self = [super init];
     if (self) {
