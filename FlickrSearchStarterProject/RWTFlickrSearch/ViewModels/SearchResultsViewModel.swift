@@ -6,7 +6,7 @@
 //  Copyright © 2016 Colin Eberhardt. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import SimpleLogger
 
 /**
@@ -21,7 +21,7 @@ import SimpleLogger
     
     // MARK: - Initialization
     
-    init(withSearchResults results: FlickrSearchResults, services: ViewModelServicable) {
+    @objc init(withSearchResults results: FlickrSearchResults, services: ViewModelServicable) {
         self.title = results.searchString
         self.searchResults = results.photosArray
         
