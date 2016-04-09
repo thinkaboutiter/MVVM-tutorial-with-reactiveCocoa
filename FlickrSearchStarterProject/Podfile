@@ -1,8 +1,12 @@
+source "https://github.com/CocoaPods/Specs.git"
+source "https://github.com/thinkaboutiter/SimpleLogger.git"
+
 use_frameworks!
 
-platform :ios, "8.4"
+platform :ios, "8.3"
 
 pod "ReactiveCocoa"
 pod "objectiveflickr"
 pod "LinqToObjectiveC"
 pod "SDWebImage"
+pod "SimpleLogger"
