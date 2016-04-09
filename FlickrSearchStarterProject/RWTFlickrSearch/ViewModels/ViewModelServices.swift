@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SimpleLogger
 
 class ViewModelServices: NSObject, ViewModelServicable {
     
@@ -22,7 +23,7 @@ class ViewModelServices: NSObject, ViewModelServicable {
     // MARK: - Life cycle
     
     deinit {
-        debugPrint("\(self) \(#line) \(#function) » Deinitialized")
+        Logger.logInfo().logMessage("\(self) \(#line) \(#function) » `FlickrSearchViewModel` Deinitialized")
     }
     
     // MARK: - `ViewModelServicable` protocol
