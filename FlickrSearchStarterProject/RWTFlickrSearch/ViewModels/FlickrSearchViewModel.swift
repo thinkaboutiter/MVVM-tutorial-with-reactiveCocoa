@@ -45,7 +45,7 @@ import SimpleLogger
     // MARK: - Life cycle
     
     deinit {
-        Logger.logInfo().logMessage("\(self) \(#line) \(#function) » `FlickrSearchViewModel` Deinitialized")
+        Logger.logInfo().logMessage("\(self) \(#line) \(#function) » `\(String(FlickrSearchViewModel.self))` Deinitialized")
     }
     
     // MARK: - Signals

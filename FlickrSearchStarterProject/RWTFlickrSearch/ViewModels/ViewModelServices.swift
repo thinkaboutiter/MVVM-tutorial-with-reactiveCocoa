@@ -23,7 +23,7 @@ class ViewModelServices: NSObject, ViewModelServicable {
     // MARK: - Life cycle
     
     deinit {
-        Logger.logInfo().logMessage("\(self) \(#line) \(#function) » `FlickrSearchViewModel` Deinitialized")
+        Logger.logInfo().logMessage("\(self) \(#line) \(#function) » `\(String(ViewModelServices.self))` Deinitialized")
     }
     
     // MARK: - `ViewModelServicable` protocol
