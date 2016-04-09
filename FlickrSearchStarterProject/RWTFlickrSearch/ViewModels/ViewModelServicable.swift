@@ -11,4 +11,5 @@ import Foundation
 /** Allows the ViewModel to obtain a reference to an implementation of the `FlickrSearchable` protocol */
 @objc protocol ViewModelServicable: NSObjectProtocol {
     func getFlickrSearchService() -> FlickrSearchable
+    func pushViewModel(viewModel: AnyObject)
 }
