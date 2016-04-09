@@ -52,7 +52,23 @@ import SimpleLogger
     
     /** Delegates to the model to perform the search */
     private func executeSearchSignal() -> RACSignal {
-        let signal = self.services.getFlickrSearchService().flickrSearchSignal(forSearchString: self.searchText).logAll()
+        let signal = self.services
+            .getFlickrSearchService()
+            .flickrSearchSignal(forSearchString: self.searchText)
+            
+            // adds a `doNext` operation to the signal the search command creates when it executes
+            .doNext { (results: AnyObject!) in
+                guard let validResults: FlickrSearchResults = results as? FlickrSearchResults else {
+                    Logger.logError().logMessage("\(self) \(#line) \(#function) » Unable to downcast `results` object to `FlickrSearchResults` object")
+                    return
+                }
+                
+                // create the new ViewModel that displays the search results
+                let searchResultsViewModel: SearchResultsViewModel = SearchResultsViewModel(withSearchResults: validResults, services: self.services)
+                
+                // push the new ViewModel via the `ViewModelServicable`
+                self.services.pushViewModel(searchResultsViewModel)
+            }
         return signal
     }
 }
