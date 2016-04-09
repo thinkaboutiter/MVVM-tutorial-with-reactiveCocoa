@@ -8,6 +8,7 @@
 
 #import "RWTAppDelegate.h"
 #import "RWTFlickrSearchViewController.h"
+#import "RWTFlickrSearch-Swift.h"
 @import SimpleLogger;
 
 @interface RWTAppDelegate ()

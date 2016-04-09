@@ -5,6 +5,7 @@
 
 #import "RWTSearchResultsViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "RWTFlickrSearch-Swift.h"
 
 @interface RWTSearchResultsViewController ()
 
