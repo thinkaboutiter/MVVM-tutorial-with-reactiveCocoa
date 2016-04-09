@@ -44,15 +44,18 @@ class ViewModelServices: NSObject, ViewModelServicable {
     
     /***/
     func pushViewModel(viewModel: AnyObject) {
+        let viewController: UIViewController
+        
         // check passed `viewModel` object
-        guard let validViewModel: SearchResultsViewModel = viewModel as? SearchResultsViewModel else {
+        if let validViewModel: SearchResultsViewModel = viewModel as? SearchResultsViewModel {
+            viewController = RWTSearchResultsViewController(viewModel: validViewModel)
+        }
+        else {
             Logger.logError().logMessage("\(self) \(#line) \(#function) » trying to push unknown `ViewModel` object")
             return
         }
         
-        let viewController: RWTSearchResultsViewController
-        
-        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
