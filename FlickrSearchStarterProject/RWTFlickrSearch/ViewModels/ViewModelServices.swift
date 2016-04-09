@@ -18,7 +18,14 @@ class ViewModelServices: NSObject, ViewModelServicable {
         return lazy_searchService
     }()
     
+    private weak var navigationController: UINavigationController?
+    
     // MARK: - Initialize
+    
+    init(withNavigationController navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        super.init()
+    }
     
     // MARK: - Life cycle
     
@@ -34,4 +41,18 @@ class ViewModelServices: NSObject, ViewModelServicable {
     func getFlickrSearchService() -> FlickrSearchable {
         return self.searchService
     }
+    
+    /***/
+    func pushViewModel(viewModel: AnyObject) {
+        // check passed `viewModel` object
+        guard let validViewModel: SearchResultsViewModel = viewModel as? SearchResultsViewModel else {
+            Logger.logError().logMessage("\(self) \(#line) \(#function) » trying to push unknown `ViewModel` object")
+            return
+        }
+        
+        let viewController: RWTSearchResultsViewController
+        
+        
+    }
+    
 }
