@@ -10,7 +10,7 @@
 @interface RWTSearchResultsViewController ()
 
 // `viewModel`
-@property(nullable, nonatomic, weak) SearchResultsViewModel* viewModel;
+@property(nonnull, nonatomic, strong) SearchResultsViewModel* viewModel;
 
 // outlets
 @property (weak, nonatomic) IBOutlet UITableView* searchResultsTable;
