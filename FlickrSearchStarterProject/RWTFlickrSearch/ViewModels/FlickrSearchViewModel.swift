@@ -28,7 +28,7 @@ import ReactiveCocoa
         
         // create `validSearchSignal`
         let validSearchSignal: RACSignal = RACObserve(self, "searchText").map { (value: AnyObject!) -> AnyObject! in
-            (value as! String).characters.count > 3
+            (value as! String).characters.count > 2
         }.distinctUntilChanged()
         
         validSearchSignal.subscribeNext { (value: AnyObject!) in
