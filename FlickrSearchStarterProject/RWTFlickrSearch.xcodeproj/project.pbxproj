@@ -241,12 +241,12 @@
 		72E40176192BFFCE00354806 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4F1FF3191CB16CFC00308FD3 /* RWTFlickrSearch-Bridging-Header.h */,
-				72E40177192BFFCE00354806 /* RWTFlickrSearch-Info.plist */,
+				4F93B4631CB03A4A00B71BCB /* Common.h */,
 				72E40178192BFFCE00354806 /* InfoPlist.strings */,
 				72E4017B192BFFCE00354806 /* main.m */,
+				4F1FF3191CB16CFC00308FD3 /* RWTFlickrSearch-Bridging-Header.h */,
+				72E40177192BFFCE00354806 /* RWTFlickrSearch-Info.plist */,
 				72E4017D192BFFCE00354806 /* RWTFlickrSearch-Prefix.pch */,
-				4F93B4631CB03A4A00B71BCB /* Common.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
