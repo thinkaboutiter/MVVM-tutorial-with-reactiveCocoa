@@ -12,7 +12,7 @@ import SimpleLogger
 /**
  ViewModel to *back* the search results View
  */
-@objc class SearchResultsViewModel: NSObject {
+class SearchResultsViewModel: NSObject {
     
     // MARK: - Properties
     
@@ -21,7 +21,7 @@ import SimpleLogger
     
     // MARK: - Initialization
     
-    @objc init(withSearchResults results: FlickrSearchResults, services: ViewModelServicable) {
+    init(withSearchResults results: FlickrSearchResults, services: ViewModelServicable) {
         self.title = results.searchString
         self.searchResults = results.photosArray
         

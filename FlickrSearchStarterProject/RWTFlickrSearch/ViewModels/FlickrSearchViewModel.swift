@@ -13,7 +13,7 @@ import SimpleLogger
 /** Represents the *view-state* of the application.
     It also responds to user interactions and *events* that come from the **Model layer**,
     each of which are reflected by changes in *view-state* */
-@objc class FlickrSearchViewModel: NSObject {
+class FlickrSearchViewModel: NSObject {
     var searchText: String = ""
     var title: String = "Flickr Search"
     var executeSearchCommand: RACCommand!
@@ -22,7 +22,7 @@ import SimpleLogger
     
     // MARK: - Initialize
     
-    @objc init(withServices services: ViewModelServicable) {
+    init(withServices services: ViewModelServicable) {
         self.services = services
         
         super.init()

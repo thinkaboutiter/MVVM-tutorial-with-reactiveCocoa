@@ -32,7 +32,7 @@
 - (ViewModelServices *)viewModelServices
 {
     if (!_viewModelServices) {
-        _viewModelServices = [ViewModelServices new];
+        _viewModelServices = [[ViewModelServices alloc] initWithNavigationController:self.navigationController];
     }
     return _viewModelServices;
 }
