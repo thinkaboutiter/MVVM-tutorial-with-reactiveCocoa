@@ -7,7 +7,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "RWTFlickrSearch-Swift.h"
 
-@interface RWTSearchResultsViewController ()
+@interface RWTSearchResultsViewController () <UITableViewDataSource>
 
 // `viewModel`
 @property(nonnull, nonatomic, strong) SearchResultsViewModel* viewModel;
@@ -29,5 +29,44 @@
     }
     return self;
 }
+
+#pragma mark - Life cycle
+
+static NSString* const CellIdentifier = @"cell";
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self.searchResultsTable registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
+    self.searchResultsTable.dataSource = self;
+    
+    [self bindViewModel];
+}
+
+#pragma mark - Binding
+
+- (void)bindViewModel
+{
+    self.title = self.viewModel.title;
+}
+
+#pragma mark - UITableViewDataSource protocol
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.viewModel.searchResults.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if ([self.viewModel.searchResults[indexPath.row] title]) {
+        cell.textLabel.text = [self.viewModel.searchResults[indexPath.row] title];
+    }
+    
+    return cell;
+}
+
 
 @end
