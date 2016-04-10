@@ -150,7 +150,7 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
     
     func flickrImageMetadata(forPhotoId photoId: String) -> RACSignal {
         // `favouitesSignal`
-        let favouitesSignal: RACSignal = self.signalFromAPIMethod("flickr.photos.getFavorites",
+        let favouritesSignal: RACSignal = self.signalFromAPIMethod("flickr.photos.getFavorites",
                                                                   arguments: [
                                                                     "photo_id" : photoId
             ]) { (response) -> AnyObject in
@@ -159,7 +159,7 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
                 }
                 else {
                     Logger.logError().logMessage("\(self) \(#line) \(#function) » `photo.total` can not be downcast:").logObject(response.valueForKeyPath("photo.total"))
-                    return response.valueForKeyPath("photo.total")!
+                    return "0"
                 }
             }
         
@@ -173,11 +173,11 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
                 }
                 else {
                     Logger.logError().logMessage("\(self) \(#line) \(#function) » `photo.comments._text` can not be downcast:").logObject(response.valueForKeyPath("photo.comments._text"))
-                    return response.valueForKeyPath("photo.comments._text")!
+                    return "0"
                 }
         }
         
-        let combinedSignal: RACSignal = RACSignal.combineLatest([favouitesSignal, commentsSignal]).map { (value: AnyObject!) -> AnyObject! in
+        let combinedSignal: RACSignal = RACSignal.combineLatest([favouritesSignal, commentsSignal]).map { (value: AnyObject!) -> AnyObject! in
             if let validTuple: RACTuple = value as? RACTuple {
                 let favs: String = validTuple.first as! String
                 let coms: String = validTuple.second as! String
