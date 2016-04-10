@@ -6,11 +6,16 @@
 #import "RWTSearchResultsViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "RWTFlickrSearch-Swift.h"
+#import "CETableViewBindingHelper.h"
+#import "RWTSearchResultsTableViewCell.h"
 
-@interface RWTSearchResultsViewController () <UITableViewDataSource>
+@interface RWTSearchResultsViewController ()
 
 // `viewModel`
-@property(nonnull, nonatomic, strong) SearchResultsViewModel* viewModel;
+@property (nonnull, nonatomic, strong) SearchResultsViewModel* viewModel;
+
+// `bindingHelper`
+@property (nonnull, nonatomic, strong) CETableViewBindingHelper* bindingHelper;
 
 // outlets
 @property (weak, nonatomic) IBOutlet UITableView* searchResultsTable;
@@ -32,15 +37,9 @@
 
 #pragma mark - Life cycle
 
-static NSString* const CellIdentifier = @"cell";
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self.searchResultsTable registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
-    self.searchResultsTable.dataSource = self;
-    
     [self bindViewModel];
 }
 
@@ -49,23 +48,12 @@ static NSString* const CellIdentifier = @"cell";
 - (void)bindViewModel
 {
     self.title = self.viewModel.title;
-}
-
-#pragma mark - UITableViewDataSource protocol
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.viewModel.searchResultsArray.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if ([self.viewModel.searchResultsArray[indexPath.row] title]) {
-        cell.textLabel.text = [self.viewModel.searchResultsArray[indexPath.row] title];
-    }
     
-    return cell;
+    UINib* nib = [UINib nibWithNibName:NSStringFromClass([RWTSearchResultsTableViewCell class]) bundle:nil];
+    self.bindingHelper = [CETableViewBindingHelper bindingHelperForTableView:self.searchResultsTable
+                                                            sourceSignal:RACObserve(self.viewModel, searchResultsArray)
+                                                        selectionCommand:nil
+                                                            templateCell:nib];
 }
 
 
