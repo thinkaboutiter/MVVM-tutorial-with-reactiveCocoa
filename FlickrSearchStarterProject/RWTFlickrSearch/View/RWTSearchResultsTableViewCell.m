@@ -25,17 +25,34 @@
 
 #pragma mark - Life cycle
 
+- (void)setParalallx:(CGFloat)value
+{
+    self.imageThumbnailView.transform = CGAffineTransformMakeTranslation(0, value);
+}
+
 #pragma mark - Binding (private)
 
 - (void)bindViewModel:(id)viewModel
 {
-    FlickrPhoto* photo = viewModel;
+    SearchResultsItemViewModel* photo = viewModel;
     self.titleLabel.text = photo.title;
-    self.imageThumbnailView.contentMode = UIViewContentModeScaleToFill;
+    self.imageThumbnailView.contentMode = UIViewContentModeScaleAspectFill;
     
     // Makes use of the `SDWebImage` pod
     // This useful utility downloads and decodes images on background threads, greatly improving scroll performance
     [self.imageThumbnailView sd_setImageWithURL:photo.url];
+    
+    [RACObserve(photo, favourites) subscribeNext:^(NSNumber* x) {
+        self.favouritesLabel.text = [x stringValue];
+        self.favouritesIcon.hidden = (x == nil);
+    }];
+    
+    [RACObserve(photo, comments) subscribeNext:^(NSNumber* x) {
+        self.commentsLabel.text = [x stringValue];
+        self.commentsIcon.hidden = (x == nil);
+    }];
+    
+    photo.isVisible = true;
 }
 
 @end

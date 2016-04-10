@@ -9,7 +9,7 @@
 #import "CETableViewBindingHelper.h"
 #import "RWTSearchResultsTableViewCell.h"
 
-@interface RWTSearchResultsViewController ()
+@interface RWTSearchResultsViewController () <UITableViewDelegate>
 
 // `viewModel`
 @property (nonnull, nonatomic, strong) SearchResultsViewModel* viewModel;
@@ -54,6 +54,22 @@
                                                             sourceSignal:RACObserve(self.viewModel, searchResultsArray)
                                                         selectionCommand:nil
                                                             templateCell:nib];
+    
+    // `bindingHelper` forwards delegate method invocations to its own delegate property
+    // so you can still add a custom behavior.
+    self.bindingHelper.delegate = self;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSArray* visibleCells = [self.searchResultsTable visibleCells];
+    
+    for (RWTSearchResultsTableViewCell* cell in visibleCells) {
+        CGFloat value = -40 + (cell.frame.origin.y - self.searchResultsTable.contentOffset.y) / 5;
+        [cell setParalallx:value];
+    }
 }
 
 

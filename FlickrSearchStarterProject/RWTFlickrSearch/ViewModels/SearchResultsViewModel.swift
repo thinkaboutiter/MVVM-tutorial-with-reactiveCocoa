@@ -17,13 +17,15 @@ class SearchResultsViewModel: NSObject {
     // MARK: - Properties
     
     var title: String
-    var searchResultsArray: [FlickrPhoto]
+    var searchResultsArray: [SearchResultsItemViewModel]
     
     // MARK: - Initialization
     
     init(withSearchResults results: FlickrSearchResults, services: ViewModelServicable) {
         self.title = results.searchString
-        self.searchResultsArray = results.photosArray
+        self.searchResultsArray = results.photosArray.map({ (photo: FlickrPhoto) -> SearchResultsItemViewModel in
+            return SearchResultsItemViewModel(withPhoto: photo, services: services)
+        })
         
         super.init()
     }

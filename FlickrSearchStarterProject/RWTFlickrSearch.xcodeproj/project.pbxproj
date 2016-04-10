@@ -18,6 +18,8 @@
 		4F1FF31F1CB17ACC00308FD3 /* FlickrSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1FF31E1CB17ACC00308FD3 /* FlickrSearchResults.swift */; };
 		4F93B4621CB0386F00B71BCB /* FlickrSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F93B4611CB0386F00B71BCB /* FlickrSearchViewModel.swift */; };
 		4F93B4651CB0852500B71BCB /* RACHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F93B4641CB0852500B71BCB /* RACHelpers.swift */; };
+		4FEE41201CBA9BAF00A39263 /* FlickrPhotoMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE411F1CBA9BAF00A39263 /* FlickrPhotoMetadata.swift */; };
+		4FEE41221CBA9E7B00A39263 /* SearchResultsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE41211CBA9E7B00A39263 /* SearchResultsItemViewModel.swift */; };
 		728550B5193E52740032A754 /* CETableViewBindingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 728550B4193E52740032A754 /* CETableViewBindingHelper.m */; };
 		72E40170192BFFCE00354806 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E4016F192BFFCE00354806 /* Foundation.framework */; };
 		72E40172192BFFCE00354806 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E40171192BFFCE00354806 /* CoreGraphics.framework */; };
@@ -64,6 +66,8 @@
 		4F93B4631CB03A4A00B71BCB /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		4F93B4641CB0852500B71BCB /* RACHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACHelpers.swift; path = RACHelpers/RACHelpers.swift; sourceTree = "<group>"; };
 		4FEE411E1CB9A59E00A39263 /* RWTFlickrSearch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RWTFlickrSearch-Bridging-Header.h"; sourceTree = "<group>"; };
+		4FEE411F1CBA9BAF00A39263 /* FlickrPhotoMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrPhotoMetadata.swift; sourceTree = "<group>"; };
+		4FEE41211CBA9E7B00A39263 /* SearchResultsItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsItemViewModel.swift; sourceTree = "<group>"; };
 		688696C0108168A4C9C4A042 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		728550B2193E52740032A754 /* CEReactiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEReactiveView.h; sourceTree = "<group>"; };
 		728550B3193E52740032A754 /* CETableViewBindingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CETableViewBindingHelper.h; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 				4F1FF3171CB166BF00308FD3 /* ViewModelServicable.swift */,
 				4F1FF31A1CB16E0C00308FD3 /* ViewModelServices.swift */,
 				4F1CD12F1CB9809B00C8506E /* SearchResultsViewModel.swift */,
+				4FEE41211CBA9E7B00A39263 /* SearchResultsItemViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 				4F1FF3151CB1652D00308FD3 /* FlickrSearcher.swift */,
 				4F1FF31C1CB178CA00308FD3 /* FlickrPhoto.swift */,
 				4F1FF31E1CB17ACC00308FD3 /* FlickrSearchResults.swift */,
+				4FEE411F1CBA9BAF00A39263 /* FlickrPhotoMetadata.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -446,9 +452,11 @@
 				4F1FF31F1CB17ACC00308FD3 /* FlickrSearchResults.swift in Sources */,
 				72E40180192BFFCE00354806 /* RWTAppDelegate.m in Sources */,
 				72E401BE192C050F00354806 /* RWTSearchResultsTableViewCell.m in Sources */,
+				4FEE41201CBA9BAF00A39263 /* FlickrPhotoMetadata.swift in Sources */,
 				4F1FF3161CB1652D00308FD3 /* FlickrSearcher.swift in Sources */,
 				4F1FF3181CB166BF00308FD3 /* ViewModelServicable.swift in Sources */,
 				72E401B7192C03AB00354806 /* RWTRecentSearchItemTableViewCell.m in Sources */,
+				4FEE41221CBA9E7B00A39263 /* SearchResultsItemViewModel.swift in Sources */,
 				4F93B4621CB0386F00B71BCB /* FlickrSearchViewModel.swift in Sources */,
 				72E4017C192BFFCE00354806 /* main.m in Sources */,
 				72E401B9192C03AB00354806 /* RWTSearchResultsViewController.m in Sources */,
