@@ -25,13 +25,18 @@
 
 #pragma mark - Life cycle
 
+- (void)setParalallx:(CGFloat)value
+{
+    self.imageThumbnailView.transform = CGAffineTransformMakeTranslation(0, value);
+}
+
 #pragma mark - Binding (private)
 
 - (void)bindViewModel:(id)viewModel
 {
     FlickrPhoto* photo = viewModel;
     self.titleLabel.text = photo.title;
-    self.imageThumbnailView.contentMode = UIViewContentModeScaleToFill;
+    self.imageThumbnailView.contentMode = UIViewContentModeScaleAspectFill;
     
     // Makes use of the `SDWebImage` pod
     // This useful utility downloads and decodes images on background threads, greatly improving scroll performance

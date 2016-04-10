@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchResults" rowHeight="206" id="HSB-zc-trE" customClass="RWTSearchResultsTableViewCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchResults" rowHeight="206" id="HSB-zc-trE" customClass="RWTSearchResultsTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="206"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HSB-zc-trE" id="VHG-ii-hib">
@@ -15,10 +15,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="h6B-cc-F9Y">
-                        <rect key="frame" x="142" y="84.5" width="37" height="37"/>
+                        <rect key="frame" x="142" y="85" width="37" height="37"/>
                     </activityIndicatorView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V9j-dS-aVT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="206"/>
+                        <rect key="frame" x="0.0" y="-100" width="320" height="406"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lzc-mC-Y1P">
                         <rect key="frame" x="0.0" y="173" width="320" height="33"/>
@@ -40,20 +40,20 @@
                                             <constraint firstAttribute="width" constant="22" id="DfM-Ql-6sM"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utI-go-YQe">
-                                        <rect key="frame" x="296" y="8" width="23.5" height="17"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" text="123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utI-go-YQe">
+                                        <rect key="frame" x="296" y="8" width="24" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Photo title ..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAC-Ba-7T5">
-                                        <rect key="frame" x="8" y="8" width="188.5" height="17"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" horizontalCompressionResistancePriority="748" text="Photo title ..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAC-Ba-7T5">
+                                        <rect key="frame" x="8" y="8" width="188" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBG-aU-6bu">
-                                        <rect key="frame" x="234" y="8" width="23.5" height="17"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" text="123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBG-aU-6bu">
+                                        <rect key="frame" x="234" y="8" width="24" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -92,9 +92,9 @@
                     <constraint firstAttribute="trailing" secondItem="Lzc-mC-Y1P" secondAttribute="trailing" id="EcR-Rh-HWq"/>
                     <constraint firstItem="V9j-dS-aVT" firstAttribute="leading" secondItem="VHG-ii-hib" secondAttribute="leading" id="FaT-SH-mcN"/>
                     <constraint firstAttribute="bottom" secondItem="Lzc-mC-Y1P" secondAttribute="bottom" id="MjK-Xa-vQx"/>
-                    <constraint firstItem="V9j-dS-aVT" firstAttribute="top" secondItem="VHG-ii-hib" secondAttribute="top" id="Pbr-tz-ItT"/>
+                    <constraint firstItem="V9j-dS-aVT" firstAttribute="top" secondItem="VHG-ii-hib" secondAttribute="top" constant="-100" id="Pbr-tz-ItT"/>
                     <constraint firstItem="h6B-cc-F9Y" firstAttribute="centerX" secondItem="VHG-ii-hib" secondAttribute="centerX" id="qYW-vn-mg2"/>
-                    <constraint firstAttribute="bottom" secondItem="V9j-dS-aVT" secondAttribute="bottom" id="zBj-2a-vGt"/>
+                    <constraint firstAttribute="bottom" secondItem="V9j-dS-aVT" secondAttribute="bottom" constant="-100" id="zBj-2a-vGt"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
