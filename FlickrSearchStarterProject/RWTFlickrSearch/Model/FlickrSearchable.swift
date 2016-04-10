@@ -12,4 +12,5 @@ import ReactiveCocoa
 /** Define interface for the Model layer */
 @objc protocol FlickrSearchable: NSObjectProtocol {
     func flickrSearchSignal(forSearchString searchString: String) -> RACSignal
+    func flickrImageMetadata(forPhotoId photoId: String) -> RACSignal
 }
