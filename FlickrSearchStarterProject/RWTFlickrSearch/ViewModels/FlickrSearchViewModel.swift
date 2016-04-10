@@ -13,7 +13,7 @@ import SimpleLogger
 /** Represents the *view-state* of the application.
     It also responds to user interactions and *events* that come from the **Model layer**,
     each of which are reflected by changes in *view-state* */
-@objc class FlickrSearchViewModel: NSObject {
+class FlickrSearchViewModel: NSObject {
     var searchText: String = ""
     var title: String = "Flickr Search"
     var executeSearchCommand: RACCommand!
@@ -22,7 +22,7 @@ import SimpleLogger
     
     // MARK: - Initialize
     
-    @objc init(withServices services: ViewModelServicable) {
+    init(withServices services: ViewModelServicable) {
         self.services = services
         
         super.init()
@@ -45,14 +45,30 @@ import SimpleLogger
     // MARK: - Life cycle
     
     deinit {
-        Logger.logInfo().logMessage("\(self) \(#line) \(#function) » `FlickrSearchViewModel` Deinitialized")
+        Logger.logInfo().logMessage("\(self) \(#line) \(#function) » `\(String(FlickrSearchViewModel.self))` Deinitialized")
     }
     
     // MARK: - Signals
     
     /** Delegates to the model to perform the search */
     private func executeSearchSignal() -> RACSignal {
-        let signal = self.services.getFlickrSearchService().flickrSearchSignal(forSearchString: self.searchText).logAll()
+        let signal = self.services
+            .getFlickrSearchService()
+            .flickrSearchSignal(forSearchString: self.searchText)
+            
+            // adds a `doNext` operation to the signal the search command creates when it executes
+            .doNext { (results: AnyObject!) in
+                guard let validResults: FlickrSearchResults = results as? FlickrSearchResults else {
+                    Logger.logError().logMessage("\(self) \(#line) \(#function) » Unable to downcast `results` object to `FlickrSearchResults` object")
+                    return
+                }
+                
+                // create the new ViewModel that displays the search results
+                let searchResultsViewModel: SearchResultsViewModel = SearchResultsViewModel(withSearchResults: validResults, services: self.services)
+                
+                // push the new ViewModel via the `ViewModelServicable`
+                self.services.pushViewModel(searchResultsViewModel)
+            }
         return signal
     }
 }

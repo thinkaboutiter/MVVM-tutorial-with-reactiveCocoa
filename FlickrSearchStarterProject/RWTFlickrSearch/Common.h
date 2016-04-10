@@ -9,6 +9,5 @@
 #ifndef Common_h
 #define Common_h
 
-#import "RWTFlickrSearch-Swift.h"
 
 #endif /* Common_h */

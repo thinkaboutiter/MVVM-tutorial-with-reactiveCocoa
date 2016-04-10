@@ -8,6 +8,7 @@
 
 #import "RWTAppDelegate.h"
 #import "RWTFlickrSearchViewController.h"
+#import "RWTFlickrSearch-Swift.h"
 @import SimpleLogger;
 
 @interface RWTAppDelegate ()
@@ -31,7 +32,7 @@
 - (ViewModelServices *)viewModelServices
 {
     if (!_viewModelServices) {
-        _viewModelServices = [ViewModelServices new];
+        _viewModelServices = [[ViewModelServices alloc] initWithNavigationController:self.navigationController];
     }
     return _viewModelServices;
 }

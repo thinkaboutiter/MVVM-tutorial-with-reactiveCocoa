@@ -12,11 +12,11 @@ class FlickrSearchResults: NSObject {
     
     // MARK: - Properties
     
-    var searchString: String?
-    var photosArray: [FlickrPhoto]?
-    var totalResults: Int64?
+    var searchString: String = ""
+    var photosArray: [FlickrPhoto] = [FlickrPhoto]()
+    var totalResults: Int64 = 0
     
     override var description: String {
-        return "searchString: `\(self.searchString ?? "")`,\ntotalResults: \(self.totalResults ?? 0),\nphotos: \(self.photosArray ?? [FlickrPhoto]())"
+        return "searchString: `\(self.searchString)`,\ntotalResults: \(self.totalResults),\nphotos: \(self.photosArray)"
     }
 }

@@ -18,12 +18,19 @@ class ViewModelServices: NSObject, ViewModelServicable {
         return lazy_searchService
     }()
     
+    private weak var navigationController: UINavigationController?
+    
     // MARK: - Initialize
+    
+    init(withNavigationController navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        super.init()
+    }
     
     // MARK: - Life cycle
     
     deinit {
-        Logger.logInfo().logMessage("\(self) \(#line) \(#function) » `FlickrSearchViewModel` Deinitialized")
+        Logger.logInfo().logMessage("\(self) \(#line) \(#function) » `\(String(ViewModelServices.self))` Deinitialized")
     }
     
     // MARK: - `ViewModelServicable` protocol
@@ -34,4 +41,21 @@ class ViewModelServices: NSObject, ViewModelServicable {
     func getFlickrSearchService() -> FlickrSearchable {
         return self.searchService
     }
+    
+    /***/
+    func pushViewModel(viewModel: AnyObject) {
+        let viewController: UIViewController
+        
+        // check passed `viewModel` object
+        if let validViewModel: SearchResultsViewModel = viewModel as? SearchResultsViewModel {
+            viewController = RWTSearchResultsViewController(viewModel: validViewModel)
+        }
+        else {
+            Logger.logError().logMessage("\(self) \(#line) \(#function) » trying to push unknown `ViewModel` object")
+            return
+        }
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
 }
