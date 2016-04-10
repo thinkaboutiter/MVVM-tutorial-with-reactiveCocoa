@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveCocoa
 import objectiveflickr
+import SimpleLogger
 
 /** Exposes services and is responsible for providing business logic for the application */
 class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
@@ -61,7 +62,7 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
                         return validTuple.second
                     }
                     else {
-                        debugPrint("\(self) \(#line) \(#function) » possible unsuccessful `RACTuple` downcast : \(tuple)")
+                        Logger.logError().logMessage("\(self) \(#line) \(#function) » possible unsuccessful `RACTuple` downcast").logObject(tuple)
                         return (tuple as! RACTuple).second
                     }
                 })
@@ -101,10 +102,13 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
             
             // `validResults`
             if let validResults = response.valueForKeyPath("photos.total") as? String {
-                results.totalResults = Int64(validResults)
+                
+                // TODO: validate `validResults` string for digits!
+                
+                results.totalResults = Int64(validResults)!
             }
             else {
-                debugPrint("\(self) \(#line) \(#function) » `photos.total` can not be downcast: \(response.valueForKeyPath("photos.total"))")
+                Logger.logError().logMessage("\(self) \(#line) \(#function) » `photos.total` can not be downcast:").logObject(response.valueForKeyPath("photos.total"))
             }
             
             // `validPhotosArray`
@@ -117,7 +121,7 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
                         photo.title = validTitle
                     }
                     else {
-                        debugPrint("\(self) \(#line) \(#function) » `title` can not be downcast: \(jsonObject["title"])")
+                        Logger.logError().logMessage("\(self) \(#line) \(#function) » `title` can not be downcast:").logObject(jsonObject["title"])
                     }
                     
                     // `validIdentifier`
@@ -125,7 +129,7 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
                         photo.identifier = validIdentifier
                     }
                     else {
-                        debugPrint("\(self) \(#line) \(#function) » `id` can not be downcast: \(jsonObject["id"])")
+                        Logger.logError().logMessage("\(self) \(#line) \(#function) » `id` can not be downcast:").logObject(jsonObject["id"])
                     }
                     
                     // `validUrl`
@@ -135,12 +139,62 @@ class FlickrSearcher: NSObject, FlickrSearchable, OFFlickrAPIRequestDelegate {
                 })
             }
             else {
-                debugPrint("\(self) \(#line) \(#function) » `photos.photo` can not be downcast: \(response.valueForKeyPath("photos.photo"))")
+                Logger.logError().logMessage("\(self) \(#line) \(#function) » `photos.photo` can not be downcast:").logObject(response.valueForKeyPath("photos.photo"))
             }
             
             return results
         }
         
         return signal
+    }
+    
+    func flickrImageMetadata(forPhotoId photoId: String) -> RACSignal {
+        // `favouitesSignal`
+        let favouritesSignal: RACSignal = self.signalFromAPIMethod("flickr.photos.getFavorites",
+                                                                  arguments: [
+                                                                    "photo_id" : photoId
+            ]) { (response) -> AnyObject in
+                if let total: String = response.valueForKeyPath("photo.total") as? String {
+                    return total
+                }
+                else {
+                    Logger.logError().logMessage("\(self) \(#line) \(#function) » `photo.total` can not be downcast:").logObject(response.valueForKeyPath("photo.total"))
+                    return "0"
+                }
+            }
+        
+        // `commentsSignal`
+        let commentsSignal: RACSignal = self.signalFromAPIMethod("flickr.photos.getInfo",
+                                                                 arguments: [
+                                                                    "photo_id": photoId
+            ]) { (response) -> AnyObject in
+                if let total: String = response.valueForKeyPath("photo.comments._text") as? String {
+                    return total
+                }
+                else {
+                    Logger.logError().logMessage("\(self) \(#line) \(#function) » `photo.comments._text` can not be downcast:").logObject(response.valueForKeyPath("photo.comments._text"))
+                    return "0"
+                }
+        }
+        
+        let combinedSignal: RACSignal = RACSignal.combineLatest([favouritesSignal, commentsSignal]).map { (value: AnyObject!) -> AnyObject! in
+            if let validTuple: RACTuple = value as? RACTuple {
+                let favs: String = validTuple.first as! String
+                let coms: String = validTuple.second as! String
+                
+                let meta: FlickrPhotoMetadata = FlickrPhotoMetadata()
+                meta.favourites = UInt(favs)!
+                meta.comments = UInt(coms)!
+                
+                return meta
+            }
+            else {
+                Logger.logError().logMessage("\(self) \(#line) \(#function) » unable to downcast `RACTuple` object").logObject(value)
+                
+                return FlickrPhotoMetadata()
+            }
+        }
+        
+        return combinedSignal
     }
 }

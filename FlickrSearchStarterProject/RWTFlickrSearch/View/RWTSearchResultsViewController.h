@@ -5,6 +5,10 @@
 
 @import UIKit;
 
+@class SearchResultsViewModel;
+
 @interface RWTSearchResultsViewController : UIViewController
+
+- (nonnull instancetype)initWithViewModel:(nonnull SearchResultsViewModel*)viewModel;
 
 @end

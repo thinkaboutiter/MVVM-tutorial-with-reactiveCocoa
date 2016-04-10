@@ -8,6 +8,8 @@
 
 #import "RWTAppDelegate.h"
 #import "RWTFlickrSearchViewController.h"
+#import "RWTFlickrSearch-Swift.h"
+@import SimpleLogger;
 
 @interface RWTAppDelegate ()
 @property (nonatomic, retain) UINavigationController* navigationController;
@@ -30,7 +32,7 @@
 - (ViewModelServices *)viewModelServices
 {
     if (!_viewModelServices) {
-        _viewModelServices = [ViewModelServices new];
+        _viewModelServices = [[ViewModelServices alloc] initWithNavigationController:self.navigationController];
     }
     return _viewModelServices;
 }
@@ -52,6 +54,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
+    
+    // simple logger
+    [SimpleLogger enableLogging:true];
+    
     return YES;
 }
 
